@@ -3,6 +3,7 @@ package com.example.trending_git.view.ui.repolist
 import android.content.ClipData
 import androidx.lifecycle.MutableLiveData
 import com.example.trending_git.view.base.BaseViewModel
+import com.example.trending_git.view.model.RepoRepository
 
 class RepoListViewModel : BaseViewModel(){
 
