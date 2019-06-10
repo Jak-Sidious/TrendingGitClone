@@ -1,4 +1,4 @@
-package com.example.trending_git.view.model
+package com.example.trending_git.model
 
 import retrofit2.Call
 import retrofit2.Callback

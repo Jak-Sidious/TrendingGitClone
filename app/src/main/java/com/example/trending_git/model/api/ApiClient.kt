@@ -1,3 +1,5 @@
+package com.example.trending_git.model.api
+
 import com.example.trending_git.view.utils.Constants.Companion.BASE_URL
 import com.example.trending_git.view.utils.Constants.Companion.DEBUG
 import com.example.trending_git.view.utils.Constants.Companion.REQUEST_TIMEOUT_DURATION
@@ -12,7 +14,7 @@ import java.util.concurrent.TimeUnit
 object ApiClient {
 
     val instance: ApiService = Retrofit.Builder().run {
-        val gson = GsonBuilder
+        val gson = GsonBuilder()
             .enableComplexMapKeySerialization()
             .setPrettyPrinting()
             .create()
@@ -22,6 +24,7 @@ object ApiClient {
         client(createRequestInterceptorClient())
         build()
     }.create(ApiService::class.java)
+
 
     private fun createRequestInterceptorClient(): OkHttpClient {
         val interceptor = Interceptor { chain ->

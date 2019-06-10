@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.trending_git.databinding.FragmentRepoListBinding
+import com.example.trending_git.view.adapter.RepoListAdapter
+import kotlinx.android.synthetic.main.fragment_repo_list.*
 import org.jetbrains.anko.longToast
 
 class RepoListFragment : Fragment() {
@@ -19,8 +21,8 @@ class RepoListFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         viewDataBinding = FragmentRepoListBinding.inflate(inflater, container, false).apply{
-            viewModel = ViewModelProviders.of(this@RepoListFragment).get(RepoListViewModel::class.java)
-            setLifeCycleOwner(viewLifecycleOwner)
+            viewmodel = ViewModelProviders.of(this@RepoListFragment).get(RepoListViewModel::class.java)
+            setLifecycleOwner(viewLifecycleOwner)
         }
         return viewDataBinding.root
     }
@@ -35,7 +37,6 @@ class RepoListFragment : Fragment() {
 
     private fun setupObservers(){
         viewDataBinding.viewmodel?.repoListLive?.observe(viewLifecycleOwner, Observer {
-            adapter.updateRepoList(it)
         })
 
         viewDataBinding.viewmodel?.toastMessage?.observe(viewLifecycleOwner, Observer{
@@ -46,7 +47,7 @@ class RepoListFragment : Fragment() {
     private fun setupAdapter() {
         val viewModel = viewDataBinding.viewmodel
         if (viewModel != null) {
-            adapter = RepoListAdapter(viewDataBinding.viewModel!!)
+            adapter = RepoListAdapter(viewDataBinding.viewmodel!!)
             val layoutManager = LinearLayoutManager(activity)
             repo_list_rv.layoutManager = layoutManager
             repo_list_rv.addItemDecoration(DividerItemDecoration(activity, layoutManager.orientation))

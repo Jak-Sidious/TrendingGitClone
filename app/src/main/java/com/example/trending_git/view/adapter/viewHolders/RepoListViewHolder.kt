@@ -1,13 +1,13 @@
 package com.example.trending_git.view.adapter.viewHolders
 
 
-import android.content.ClipData
 import androidx.core.os.bundleOf
 import androidx.databinding.ViewDataBinding
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.trending_git.BR
 import com.example.trending_git.R
+import com.example.trending_git.model.Item
 import com.example.trending_git.view.ui.repolist.RepoListViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.view_repo_list_item.view.*
@@ -18,7 +18,7 @@ class RepoListViewHolder constructor(private val dataBinding: ViewDataBinding,
     : RecyclerView.ViewHolder(dataBinding.root) {
 
     val avatarImage = itemView.item_avatar
-    fun setup(itemData: ClipData.Item) {
+    fun setup(itemData: Item) {
         dataBinding.setVariable(BR.itemData, itemData)
         dataBinding.executePendingBindings()
 

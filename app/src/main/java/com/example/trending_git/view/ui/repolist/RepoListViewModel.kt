@@ -2,12 +2,13 @@ package com.example.trending_git.view.ui.repolist
 
 import android.content.ClipData
 import androidx.lifecycle.MutableLiveData
+import com.example.trending_git.model.Item
 import com.example.trending_git.view.base.BaseViewModel
-import com.example.trending_git.view.model.RepoRepository
+import com.example.trending_git.model.RepoRepository
 
 class RepoListViewModel : BaseViewModel(){
 
-    val repoListLive = MutableLiveData<List<ClipData.Item>>()
+    val repoListLive = MutableLiveData<List<Item>>()
 
     fun fetchRepoList() {
         dataLoading.value = true
